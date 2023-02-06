@@ -1,11 +1,20 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-// plugins/vuetify.js
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-
-
+// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-
-})
-
+  ssr: false,
+  css: ['vuetify/lib/styles/main.sass'],
+  build: {
+    
+    transpile: ['vuetify'],
+  },
+  vite: {
+      define: {
+        'process.env.DEBUG': false,
+      },
+    },
+    modules: [
+      // ...
+      '@pinia/nuxt',
+    ],
+    
+    
+  })
