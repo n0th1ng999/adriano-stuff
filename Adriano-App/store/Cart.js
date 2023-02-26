@@ -16,14 +16,16 @@ export const useCartStore = defineStore('Cart', () => {
 
     }
 
-   function removeProduct(id){
+   function removeProduct(id, all = false){
         const i = cart.value.findIndex(el => el.id == id)
         if(i != -1){
-            if(cart.value[i].quantity - 1 == 0){
+            if(all){
+                cart.value.splice(i, 1)
+            }
+            else if(cart.value[i].quantity - 1 == 0){
                 cart.value.splice(i, 1)
             }else {
                 cart.value[i].quantity -= 1
-             
             }
         }
 
